@@ -1,6 +1,5 @@
 const Affirmations = require('../models/affirmation');
 
-
 //register user
 export const registerUser = async (res, req) =>{
 
