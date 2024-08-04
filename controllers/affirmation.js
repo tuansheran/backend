@@ -1,22 +1,23 @@
 const Affirmations = require('../models/affirmation');
 
-//register user
-export const registerUser = async (res, req) =>{
+// controllers/affirmation.js
 
+exports.getAffirmation = (req, res) => {
+    // Logic for getting affirmations
+    res.send('Affirmations feed');
 };
 
-//give usser daily affirmations
-export const getAffirmation = async (res, req) =>{
-
-
+exports.saveAffirmations = (req, res) => {
+    // Logic for saving affirmations
+    res.send('Affirmation saved');
 };
 
-//save affirmation
-export const saveAffirmations = async (res, req) =>{
-
+exports.removeAffirmation = (req, res) => {
+    // Logic for removing affirmations
+    res.send('Affirmation removed');
 };
 
-//remove affirmation
-export const removeAffirmation = async (res, req) =>{
-
+exports.registerUser = (req, res) => {
+    // Logic for user registration
+    res.send('User registered');
 };

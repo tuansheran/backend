@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const affrimationsController = require('../controllers/affirmation');
+const affirmationsController = require('../controllers/affirmation');
 
-router.get('/feed', affrimationsController.getAffirmation);
-router.post('/save', affrimationsController.saveAffirmations);
-router.delete('/remove', affrimationsController.removeAffirmation);
-router.post('/resgister', affrimationsController.registerUser);
 
-module.exports.router;
+router.get('/feed', affirmationsController.getAffirmation);
+router.post('/save', affirmationsController.saveAffirmations);
+router.delete('/remove', affirmationsController.removeAffirmation);
+router.post('/register', affirmationsController.registerUser);
+
+
+module.exports = router;
