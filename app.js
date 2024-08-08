@@ -11,7 +11,7 @@ dotenv.config();
 app.use(express.json());
 
 const uri = process.env.URI;
-mongoose.connect(uri).then(()=>console.log('connected')).catch(err=>console.log(err))
+mongoose.connect(uri).then(()=>console.log('connected')).catch(err=>console.log(err));
 
 
 app.use('/', affirmationRouter);
