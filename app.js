@@ -11,13 +11,19 @@ dotenv.config();
 app.use(express.json());
 
 const uri = process.env.URI;
-mongoose.connect(uri).then(()=>console.log('connected')).catch(err=>console.log(err));
 
+const connectToDB = async () =>{
+    try{
+        await mongoose.connect(uri).then(()=>console.log('connected')).catch(err=>console.log(err));
+    }catch(err){
+        console.log("cannot connect");
+    };
+};
 
+//run app
 app.use('/', affirmationRouter);
-
-
+connectToDB();
 app.listen(3000, ()=>{
     console.log('on prot 3000');
-})
+});
 
