@@ -3,7 +3,6 @@ const User = require('../models/user');
 
 exports.getAffirmation = async (req, res) => {
     try {
-        // Retrieve 50 random affirmations
         const randomAffirmations = await Affirmation.aggregate([{ $sample: { size: 50 } }]);
 
         if (randomAffirmations.length > 0) {
@@ -22,7 +21,7 @@ exports.saveAffirmations = async (req, res) => {
 
         if(!deviceId | !affirmation){
             return res.status(400).json({message: 'data missing'});
-        }
+        };
 
         const user = await User.findOne({deviceId});
 
@@ -43,7 +42,7 @@ exports.removeAffirmation = async (req, res) => {
 
         if(!deviceId | !affirmation){
             return res.status(400).json({message: 'data missing'});
-        }
+        };
 
         const affirmationId = affirmation._id;
         const user = await User.findOne({deviceId});
@@ -72,4 +71,22 @@ exports.registerUser = async (req, res) => {
     await newUser.save();
 
     return res.status(201).json({message: 'successful'});
+};
+
+
+exports.getSavedAffirmations = async (req, res) =>{
+    try{
+        const {deviceId} = req.body;
+        const user = await User.findOne({deviceId});
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        };
+
+        const affirmations = await user.savedAffirmations;
+        res.status(200).json(affirmations);
+
+    }catch(err){
+        res.status('err');
+    }
 };
